@@ -1,53 +1,50 @@
 # Bibliography
 
-## bcrypt – Password Hashing for Python
+## bcrypt, Hashing 
 
-   PyPI – The Python Package Index.  
    https://pypi.org/project/bcrypt/  
 
-## pandas – Python Data Analysis Library  
-
-   Official Documentation.  
+## pandas, Data Analysis Library  
+ 
    https://pandas.pydata.org/docs/  
 
-## openpyxl – Read/Write Excel 2010 xlsx/xlsm/xltx/xltm files  
-
-   PyPI – The Python Package Index.  
+## openpyxl, Excel xlsx functions
+  
    https://pypi.org/project/openpyxl/  
 
-## Pillow (PIL Fork) – The Python Imaging Library
+## Pillow, Imaging Library and functioning 
 
-   PyPI – The Python Package Index.  
    https://pypi.org/project/Pillow/  
 
-## tkinter – Python Interface to Tcl/Tk
+## tkinter, Interface for Tk
 
-   Official Python Documentation.  
    https://docs.python.org/3/library/tkinter.html  
 
-## requests – HTTP Library for Python 
+## requests, HTTP Library 
 
-   PyPI – The Python Package Index.  
    https://pypi.org/project/requests/  
 
-## googletrans – Google Translate API for Python
+## googletrans, Google Translate 
 
-   PyPI – The Python Package Index.  
    https://pypi.org/project/googletrans/  
 
-## Nutritionix API Documentation
+## Nutritionix API 
 
-   Official Developer Guide.  
    https://developer.nutritionix.com/docs/v1_1  
 
-## OWASP Brute Force Protection Guidelines
+   Manjeeth Shenoy (2022) *Build a Food Calorie Counter using Django, Python and API – Full Playlist*.  
+   https://www.youtube.com/playlist?list=PLlMRDyqy-nUianTebmZdZUdvQLpJJUp8y  
+   A helping guide which taught me the principles of API, and the usage of keys. Altought i didn't use Ninja API, but the principles taught with the usage of API helped me 
+   very much. 
 
-   OWASP Foundation.  
+## OWASP Brute Force Protection 
+
    https://owasp.org/www-community/controls/Blocking_Brute_Force_Attacks  
 
-## Client/Server Programming Principles (Socket Programming)
+## Client/Server Principles
 
 Taught during the course "מועדון מתכנתים", a preperation for the IDF. 
 Provided foundational understanding of TCP socket architecture, server request handling, and client-server communication models, Extensive knowledge of python and hashing. All thy were implemented in the login authentication system.
+
 
   
