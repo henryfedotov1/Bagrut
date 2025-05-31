@@ -63,7 +63,7 @@ Based on your role (admin/student), the appropriate dashboard will open.
 admin_add_student.py
 ```
 View and manage reviews:
-- Accessible via the dashboard (button: "ניהול בקרה")
+- Accessible using the dashboard (button: "ניהול בקרה")
 
 ### Step 4: Student Functionalities
 
