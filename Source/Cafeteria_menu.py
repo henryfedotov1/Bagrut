@@ -7,21 +7,16 @@ import os
 import xlwings as xw
 from datetime import datetime
 from googletrans import Translator
-
-APP_ID = os.getenv('NUTRITIONIX_APP_ID', '227363a4')
-API_KEY = os.getenv('NUTRITIONIX_API_KEY', '48e8b571c94d62e5dcf0658fea530bc2')
-BASE_URL = 'https://trackapi.nutritionix.com/v2/natural/nutrients'
+from constants import BASE_URL, APP_ID, API_KEY, file_path_review, API_LN, Cafeteria_menu_window, color_bg_dark, \
+    color_bg_full_white, font_label, font_title, font_button, window_size_login
 
 translator = Translator()
-file_path_students = "Paying_students_Project1.xlsx"
-file_path_review = r"C:\Users\henry\OneDrive\מסמכים\review_manager.xlsx"
 user_last_request_time = {}
 
 
 def translate_to_english(text):
-
     try:
-        translated = translator.translate(text, src='iw', dest='en')
+        translated = translator.translate(text, src='iw', dest=API_LN)
         return translated.text
 
     except Exception:
@@ -29,9 +24,8 @@ def translate_to_english(text):
 
 
 def translate_to_hebrew(text):
-
     try:
-        translated = translator.translate(text, src='en', dest='iw')
+        translated = translator.translate(text, src=API_LN, dest='iw')
         return translated.text
 
     except Exception:
@@ -39,7 +33,6 @@ def translate_to_hebrew(text):
 
 
 def check_rate_limit(user_id):
-
     current_time = time.time()
     if user_id in user_last_request_time:
         last_request_time = user_last_request_time[user_id]
@@ -81,11 +74,11 @@ def get_food_info(query):
 def calorie_page(student_id, student_name):
     calorie_root = tk.Tk()
     calorie_root.title("עמוד חישוב הקלוריות")
-    calorie_root.geometry("600x500")
-    calorie_root.config(bg="#f4f4f9")
+    calorie_root.geometry(Cafeteria_menu_window)
+    calorie_root.config(bg=color_bg_full_white)
 
-    tk.Label(calorie_root, text="חישוב קלוריות", font=("Arial", 18, "bold"), bg="#f4f4f9", fg="#333").pack(pady=20)
-    tk.Label(calorie_root, text="המידע על התזונה מבוסס על כמות אוכל ממוצעת עבור ארוחה", font=("Arial", 12), bg="#f4f4f9", fg="#555").pack(pady=10)
+    tk.Label(calorie_root, text="חישוב קלוריות", font=font_title, bg=color_bg_full_white, fg=color_bg_dark).pack(pady=20)
+    tk.Label(calorie_root, text="המידע על התזונה מבוסס על כמות אוכל ממוצעת עבור ארוחה", font=font_label, bg=color_bg_full_white, fg="#555").pack(pady=10)
 
     def show_calories():
         food_query = entry_food.get().strip()
@@ -109,11 +102,11 @@ def calorie_page(student_id, student_name):
             result_label.config(text="בעיה עם קבלת המידע, לנסות שוב מאוחר יותר")
 
 
-    tk.Label(calorie_root, text="שם האוכל:", font=("Arial", 14), bg="#f4f4f9", fg="#555").pack(pady=10)
-    entry_food = ttk.Entry(calorie_root, font=("Arial", 14), width=30, justify='center')
+    tk.Label(calorie_root, text="שם האוכל:", font=font_button, bg=color_bg_full_white, fg="#555").pack(pady=10)
+    entry_food = ttk.Entry(calorie_root, font=font_button, width=30, justify='center')
     entry_food.pack(pady=10)
-    tk.Button(calorie_root, text="לחשב", command=show_calories, bg="#28a745", fg="white", font=("Arial", 12), relief="flat", width=20).pack(pady=20)
-    result_label = tk.Label(calorie_root, text="", font=("Arial", 14), bg="#f4f4f9", fg="#333")
+    tk.Button(calorie_root, text="לחשב", command=show_calories, bg="#28a745", fg=color_bg_full_white, font=font_label, relief="flat", width=20).pack(pady=20)
+    result_label = tk.Label(calorie_root, text="", font=font_button, bg=color_bg_full_white, fg="#333")
     result_label.pack(pady=10)
 
 
@@ -123,11 +116,11 @@ def calorie_page(student_id, student_name):
 
         review_window = tk.Toplevel(calorie_root)
         review_window.title("לכתוב את הביקורת")
-        review_window.geometry("400x300")
-        review_window.config(bg="#f4f4f9")
+        review_window.geometry(window_size_login)
+        review_window.config(bg=color_bg_full_white)
 
-        tk.Label(review_window, text="תרשום את הביקורת שלך עבור האוכל:", font=("Arial", 12), bg="#f4f4f9", fg="#555").pack(pady=10)
-        review_text = tk.Text(review_window, height=6, width=30, font=("Arial", 12), bg="#f4f4f9", fg="#333", wrap="word")
+        tk.Label(review_window, text="תרשום את הביקורת שלך עבור האוכל:", font=font_label, bg=color_bg_full_white, fg="#555").pack(pady=10)
+        review_text = tk.Text(review_window, height=6, width=30, font=font_label, bg=color_bg_full_white, fg="#333", wrap="word")
         review_text.pack(pady=10)
 
 
