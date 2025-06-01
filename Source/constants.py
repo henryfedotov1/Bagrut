@@ -1,5 +1,7 @@
+import os
+
 file_path = "Paying_students_Project1.xlsx"
-review_file_path = "review_manager.xlsx"
+file_path_review = "review_manager.xlsx"
 
 max_failed_attempts = 3
 lockout_duration = 300
@@ -8,40 +10,42 @@ login_fail_code = 0
 login_student_code = 1
 login_admin_code = 2
 
-excel_headers = ["Name", "ID", "Paying", "Picture", "Password", "is_admin"]
-mandotory_headers = ["ID", "Password", "is_admin", "Paying", "Picture"]
+excel_headers = ['Name', 'ID', 'Paying', 'Picture', 'Password', 'is_admin']
 prefixes = ('=', '+', '-', '@')
 
 photo_color = "gray"
 photo_size = (100, 100)
 
-API_BASE = "https://trackapi.nutritionix.com/v2/natural/nutrients"
-API_ID = "your_app_id"
-API_KEY = "your_app_key"
-API_LANGUAGE = "en"
-API_RESPONSE_LANGUAGE = "he"
-API_REQUEST_TIMEOUT = 10
-API_REQUEST_DELAY = 30
+BASE_URL = "https://trackapi.nutritionix.com/v2/natural/nutrients"
+APP_ID = os.getenv('NUTRITIONIX_APP_ID', '227363a4')
+API_KEY = os.getenv('NUTRITIONIX_API_KEY', '48e8b571c94d62e5dcf0658fea530bc2')
+API_LN = 'en'
+API_RES = 'he'
+API_OUT = 10
+API_DELAY = 30
 
-REVIEW_COLUMNS = ["ID", "Name", "Food", "Review", "Date"]
-REVIEW_APPROVAL_OPTIONS = ["Approved", "Rejected", "Pending"]
+review_columns = ['ID', 'Name', 'Review', 'Date']
+reviews_approval = ["Approved", "Rejected", "Pending"]
 
-WINDOW_SIZE_LOGIN = "400x300"
-WINDOW_SIZE_USER = "400x500"
-WINDOW_SIZE_ADMIN = "950x550"
+window_size_login = "400x300"
+window_size_user = "400x500"
+window_size_admin = "400x550"
+admin_manager_window = "950x550"
+Cafeteria_menu_window = "600x500"
 
-FONT_TITLE = ("Arial", 16, "bold")
-FONT_LABEL = ("Arial", 12)
-FONT_BUTTON = ("Arial", 14)
-FONT_TREEVIEW = ("Arial", 12)
-FONT_TREEVIEW_HEADING = ("Arial", 13, "bold")
+font_title = ("Arial", 16, "bold")
+font_label = ("Arial", 12)
+font_button = ("Arial", 14)
+font_treeview = ("Arial", 10)
+font_treeview_heading = ("Arial", 13, "bold")
 
-COLOR_BACKGROUND = "#f5f5f5"
-COLOR_BUTTON_GREEN = "#28a745"
-COLOR_BUTTON_RED = "#dc3545"
-COLOR_BUTTON_DARK = "#333"
+color_bg_wh = "#f5f5f5"
+color_bg_full_white = "#f4f4f9"
+color_bg_gr = "#28a745"
+color_bg_re = "#dc3545"
+color_bg_dark = "#333"
 
-SERVER_IP = "127.0.0.1"
-SERVER_PORT = 9999
-LOGIN_ACTION = "login"
-LOGIN_FAIL_CODE = 0
+server_ip = "127.0.0.1"
+server_port = 9999
+login_action = "login"
+login_fail_code = 0
