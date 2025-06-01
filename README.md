@@ -4,9 +4,9 @@
 
 ### Introduction
 
-This project was developed as a final project to manage cafeteria access, student payments, and food-related feedback within a local school environment. It integrates user authentication, secure password hashing, role-based dashboards, and interaction with a food nutrition API. The system is designed with simplicity, educational structure, and core security principles in mind.
+This project was developed as a final project to manage cafeteria access for paying students, and this system has food related feedback within a local school. It integrates the users (admin or student) authentication, secure password hashing, role based dashboards and interaction with a food nutrition API (Nutritionix API). 
 
-## Import Project
+## Import The Project
 
 - You can import the project by downloading it or using those commands:
 ```
