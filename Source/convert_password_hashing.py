@@ -1,7 +1,7 @@
 from openpyxl import load_workbook
 import bcrypt
+from constants import file_path
 
-file_path = "Paying_students_Project1.xlsx"
 wb = load_workbook(file_path)
 ws = wb.active
 
