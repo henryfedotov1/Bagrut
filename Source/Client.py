@@ -1,15 +1,16 @@
 import socket
 import json
-from constants import SERVER_IP, SERVER_PORT, LOGIN_ACTION
+from constants import server_ip, server_port, login_action
+
 
 def connect_to_server():
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    client_socket.connect((SERVER_IP, SERVER_PORT))
+    client_socket.connect((server_ip, server_port))
     return client_socket
 
 def send_login_request(client_socket, student_id, password):
     request = {
-        "action": LOGIN_ACTION,
+        "action": login_action,
         "student_id": student_id,
         "password": password
     }
