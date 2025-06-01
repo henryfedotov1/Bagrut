@@ -3,11 +3,10 @@ import tkinter as tk
 from tkinter import ttk, messagebox
 import subprocess
 import sys
-
-file_path = "review_manager.xlsx"
+from constants import file_path_review, admin_manager_window, font_treeview_heading, font_label, review_columns, font_button, color_bg_wh, color_bg_gr, color_bg_re
 
 def load_reviews():
-    df = pd.read_excel(file_path)
+    df = pd.read_excel(file_path_review)
     df.columns = df.columns.str.strip()
     if not df.empty:
         df = df.dropna(subset=['ID', 'Name', 'Review', 'Date'])
@@ -16,24 +15,24 @@ def load_reviews():
 def reject_review(review_id, refresh_reviews):
     df = load_reviews()
     df = df[df['ID'] != review_id]
-    df.to_excel(file_path, index=False)
+    df.to_excel(file_path_review, index=False)
     messagebox.showinfo("מחיקת ביקורת", f"הביקורת {review_id} נמחקה.")
     refresh_reviews()
 
 def open_admin_manager():
     admin_root = tk.Tk()
     admin_root.title("ניהול ביקורות")
-    admin_root.geometry("950x550")
+    admin_root.geometry(admin_manager_window)
     admin_root.configure(bg="#f0f2f5")
 
     style = ttk.Style()
-    style.configure("Treeview.Heading", font=("Arial", 13, "bold"))
-    style.configure("Treeview", font=("Arial", 12), rowheight=30)
+    style.configure("Treeview.Heading", font=font_treeview_heading)
+    style.configure("Treeview", font=font_label, rowheight=30)
 
     tree_frame = tk.Frame(admin_root, bg="#f0f2f5")
     tree_frame.pack(fill=tk.BOTH, expand=True, padx=20, pady=20)
 
-    tree = ttk.Treeview(tree_frame, columns=('ID', 'Name', 'Review', 'Date'), show='headings', selectmode="browse")
+    tree = ttk.Treeview(tree_frame, columns=review_columns, show='headings', selectmode="browse")
     tree.heading('ID', text='ID')
     tree.heading('Name', text='Name')
     tree.heading('Review', text='Review')
@@ -75,11 +74,11 @@ def open_admin_manager():
     def open_add_student_window():
         subprocess.Popen([sys.executable, "admin_add_student.py"])
 
-    reject_button = tk.Button(button_frame, text="מחק ביקורת", command=reject_selected, bg="#dc3545", fg="white", font=("Arial", 14), width=20)
+    reject_button = tk.Button(button_frame, text="מחק ביקורת", command=reject_selected, bg=color_bg_re, fg=color_bg_wh, font=font_button, width=20)
     reject_button.pack(pady=10)
 
-    add_student_button = tk.Button(button_frame, text="הוסף תלמיד חדש", command=open_add_student_window, bg="#28a745",
-                                   fg="white", font=("Arial", 14), width=20)
+    add_student_button = tk.Button(button_frame, text="הוסף תלמיד חדש", command=open_add_student_window, bg=color_bg_gr,
+                                   fg=color_bg_wh, font= font_button, width=20)
     add_student_button.pack(pady=10)
 
     refresh_reviews()
