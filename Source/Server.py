@@ -4,19 +4,19 @@ import json
 import time
 import os
 from openpyxl import load_workbook
+from constants import file_path, server_port
 
-EXCEL_FILE = "Paying_students_Project1.xlsx"
 failed_attempts = {}
 blocked_users = {}
 
 def authenticate_user(student_id, password):
     try:
-        if not os.path.exists(EXCEL_FILE):
-            raise FileNotFoundError(f"Excel file '{EXCEL_FILE}' not found.")
+        if not os.path.exists(file_path):
+            raise FileNotFoundError(f"Excel file '{file_path}' not found.")
 
-        wb = load_workbook(EXCEL_FILE)
+        wb = load_workbook(file_path)
         if 'Sheet1' not in wb.sheetnames:
-            raise ValueError("Sheet 'Sheet1' not found in Excel file.")
+            raise ValueError("Sheet isn't found in the Excel file")
 
         ws = wb['Sheet1']
         headers = [str(cell.value).strip() for cell in ws[1]]
@@ -86,7 +86,7 @@ def handle_client(client_socket):
 
 def start_server():
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    server.bind(('0.0.0.0', 9999))
+    server.bind(('0.0.0.0', server_port))
     server.listen(5)
     print("[SERVER STARTED] Listening on port 9999...")
     while True:
