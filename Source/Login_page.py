@@ -7,22 +7,21 @@ from datetime import datetime
 from Cafeteria_menu import calorie_page
 from admin_dashboard import open_admin_dashboard
 import bcrypt
+from constants import file_path, prefixes, lockout_duration, photo_size, font_button, font_title
 
-
-file_path = "Paying_students_Project1.xlsx"
 df = pd.read_excel(file_path)
 df.columns = df.columns.str.strip()
 df['ID'] = df['ID'].astype(str)
 df['Password'] = df['Password'].astype(str)
 df['is_admin'] = df['is_admin'].astype(str).str.strip()
 
-#הדבר הזה נועד כדי להגן על ברוט פורס
+
 failed_attempts = {}
 lockout_time = {}
 
 
 def is_input_safe(value):
-    return not value.startswith(('=', '+', '-', '@'))
+    return not value.startswith(prefixes)
 
 def login():
     entered_id = entry_id.get().strip()
@@ -36,8 +35,8 @@ def login():
 
     if entered_id in lockout_time:
         current_time = time.time()
-        if (current_time - lockout_time[entered_id]) < 300:
-            lock_remaining = int(300 - (current_time - lockout_time[entered_id]))
+        if (current_time - lockout_time[entered_id]) < lockout_duration:
+            lock_remaining = int(lockout_duration - (current_time - lockout_time[entered_id]))
             messagebox.showerror("שגיאה", f" יותר מידי ניסיונות, תנסה שוב בעוד כ: {lock_remaining} שניות ")
             return
         else:
@@ -80,7 +79,7 @@ def show_status_page(student_id, user_name, status_of_payment, photo_path):
 
     try:
         img = Image.open(photo_path)
-        img = img.resize((100, 100))
+        img = img.resize(photo_size)
         img = img.convert("RGB")
         photo_of_student = ImageTk.PhotoImage(img)
         photo_label = tk.Label(profile_frame, image=photo_of_student, bg="white", bd=0, relief="flat")
@@ -88,7 +87,7 @@ def show_status_page(student_id, user_name, status_of_payment, photo_path):
         photo_label.image = photo_of_student
         photo_label.pack()
     except Exception:
-        photo_def = Image.new("RGB", (100, 100), "gray")
+        photo_def = Image.new("RGB", photo_size, "gray")
         default_photo = ImageTk.PhotoImage(photo_def)
         default_label = tk.Label(profile_frame, image=default_photo, bg="white")
         default_label.image = default_photo
@@ -111,7 +110,7 @@ def show_status_page(student_id, user_name, status_of_payment, photo_path):
         command=lambda: go_to_calorie_page(status_root, student_id, user_name),
         bg="#333",
         fg="white",
-        font=("Arial", 14)
+        font=font_button
     )
     menu_button.pack(side="bottom", fill="x", padx=20, pady=10)
 
@@ -127,8 +126,8 @@ root.title("כניסה לתלמיד")
 root.geometry("400x300")
 root.config(bg="#f5f5f5")
 
-#הגדרת כפתורי משתמש
-title_label = tk.Label(root, text="כניסה מאובטחת", font=("Arial", 16, "bold"), bg="#f5f5f5", fg="#2c3e50")
+
+title_label = tk.Label(root, text="כניסה מאובטחת", font=font_title, bg="#f5f5f5", fg="#2c3e50")
 title_label.pack(pady=20)
 
 login_frame = tk.Frame(root, bg="white", bd=2, relief="groove")
