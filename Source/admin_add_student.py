@@ -3,17 +3,23 @@ from tkinter import messagebox
 from openpyxl import load_workbook
 import bcrypt
 
+
 def is_input_safe(value):
     return not value.startswith(('=', '+', '-', '@'))
+
 
 def is_password_strong(password):
     if len(password) < 4:
         return False
+        
     if not any(c.isdigit() for c in password):
         return False
+        
     if not any(c.isalpha() for c in password):
         return False
+        
     return True
+
 
 def add_student():
     name = entry_name.get().strip()
@@ -25,14 +31,17 @@ def add_student():
 
     if not (name and student_id and password):
         messagebox.showerror("שגיאה", "נא למלא את כל השדות")
+        
         return
 
-    if not is_input_safe(name) or not is_input_safe(student_id) or not is_input_safe(picture):
-        messagebox.showerror("שגיאה", "אסור להזין תווים מסוכנים בתחילת השדות (כגון = + - @)")
+    if not is_input_safe(name) or not is_input_safe(student_id) or not is_input_safe(picture) or not is_input_safe(password):
+        messagebox.showerror("שגיאה", "אסור להזין תווים מסוכנים בתחילת השדות (כמו = + - @)")
+        
         return
 
     if not is_password_strong(password):
-        messagebox.showerror("שגיאה", "הסיסמה חלשה מדי. עליה להכיל לפחות 4 תווים, מספר ואות.")
+        messagebox.showerror("שגיאה", "הסיסמה חלשה מדי. עליה להכיל לפחות 4 תווים מספרים ואותיות")
+        
         return
 
     hashed_password = bcrypt.hashpw(password.encode(), bcrypt.gensalt()).decode()
@@ -44,6 +53,7 @@ def add_student():
         wb.save("Paying_students_Project1.xlsx")
         messagebox.showinfo("הצלחה", "התלמיד נוסף בהצלחה!")
         root.destroy()
+        
     except Exception as e:
         messagebox.showerror("שגיאה", f"שגיאה בשמירה: {e}")
 
