@@ -1,8 +1,9 @@
 # Bibliography
 
-## bcrypt, Hashing 
+## bcrypt
 
-   https://pypi.org/project/bcrypt/  
+   https://www.youtube.com/watch?v=hNa05wr0DSA 
+   https://pypi.org/project/bcrypt/
 
 ## pandas, Data Analysis Library  
  
