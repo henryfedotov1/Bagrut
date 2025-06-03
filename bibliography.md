@@ -30,7 +30,7 @@
 
 ## Nutritionix API 
 
-   https://developer.nutritionix.com/docs/v1_1  
+   https://www.nutritionix.com/business/api
 
    Manjeeth Shenoy (2022) *Build a Food Calorie Counter using Django, Python and API – Full Playlist*.  
    https://www.youtube.com/playlist?list=PLlMRDyqy-nUianTebmZdZUdvQLpJJUp8y  
