@@ -2,12 +2,14 @@
 
 ## bcrypt
 
-   https://www.youtube.com/watch?v=hNa05wr0DSA 
+   https://www.youtube.com/watch?v=hNa05wr0DSA, 
    https://pypi.org/project/bcrypt/
 
-## pandas, Data Analysis Library  
+## pandas
  
-   https://pandas.pydata.org/docs/  
+    https://www.w3schools.com/python/pandas/
+    https://pypi.org/project/pandas/
+    
 
 ## openpyxl, Excel xlsx functions
   
