@@ -13,12 +13,14 @@
 
 ## openpyxl
   ```
-   https://pypi.org/project/openpyxl/  
+   https://pypi.org/project/openpyxl/
+   https://openpyxl.readthedocs.io/en/3.1/tutorial.html
 ```
 
 ## Pillow
 ```
-   https://pypi.org/project/Pillow/  
+   https://pypi.org/project/Pillow/
+   https://www.geeksforgeeks.org/python-pillow-a-fork-of-pil/
 ```
 
 ## tkinter
