@@ -10,7 +10,7 @@ def open_admin_dashboard(student_id, user_name, status_of_payment, photo_path):
     admin_root = tk.Tk()
     admin_root.title("לוח בקרת מנהל")
     admin_root.geometry(window_size_admin)
-    admin_root.config(bg=color_bg_wh)
+    admin_root.config(bg="white")
 
     profile_frame = tk.Frame(admin_root, bg=color_bg_wh)
     profile_frame.pack(pady=20)
@@ -20,7 +20,7 @@ def open_admin_dashboard(student_id, user_name, status_of_payment, photo_path):
         img = img.resize((100, 100))
         img = img.convert("RGB")
         photo = ImageTk.PhotoImage(img)
-        photo_label = tk.Label(profile_frame, image=photo, bg=color_bg_wh, bd=0, relief="flat")
+        photo_label = tk.Label(profile_frame, image=photo, bg="white", bd=0, relief="flat")
         photo_label.config(width=100, height=100)
         photo_label.pack()
         photo_label.image = photo
@@ -29,11 +29,11 @@ def open_admin_dashboard(student_id, user_name, status_of_payment, photo_path):
     except Exception:
         default_photo = Image.new("RGB", (100, 100), "gray")
         default_photo = ImageTk.PhotoImage(default_photo)
-        default_label = tk.Label(profile_frame, image=default_photo, bg=color_bg_wh)
+        default_label = tk.Label(profile_frame, image=default_photo, bg="white")
         default_label.pack()
         default_label.image = default_photo
 
-    greeting_label = tk.Label(admin_root, text=f"ברוכה הבאה,  {user_name}", font=font_title, bg=color_bg_wh)
+    greeting_label = tk.Label(admin_root, text=f"ברוכה הבאה,  {user_name}", font=font_title, bg="white")
     greeting_label.pack(pady=10)
 
     payment_status = "התשלום שלך אושר" if status_of_payment == "Yes" else "התשלום שלך ממתין. אנא ודא שהושלם התשלום כדי לקבל גישה."
