@@ -37,11 +37,11 @@ def open_admin_dashboard(student_id, user_name, status_of_payment, photo_path):
     greeting_label.pack(pady=10)
 
     payment_status = "התשלום שלך אושר" if status_of_payment == "Yes" else "התשלום שלך ממתין. אנא ודא שהושלם התשלום כדי לקבל גישה."
-    status_label = tk.Label(admin_root, text=payment_status, font= font_label, bg=color_bg_wh, wraplength=350)
+    status_label = tk.Label(admin_root, text=payment_status, font= font_label, bg="white", wraplength=350)
     status_label.pack(pady=20)
 
     current_datetime = datetime.now().strftime("%B %d, %Y - %H:%M:%S")
-    date_label = tk.Label(admin_root, text=f"זמן כניסה: {current_datetime}", font=font_treeview, bg=color_bg_wh)
+    date_label = tk.Label(admin_root, text=f"זמן כניסה: {current_datetime}", font=font_treeview, bg="white")
     date_label.pack(pady=10)
 
     menu_button = tk.Button(
